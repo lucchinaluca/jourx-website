@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="/" class="font-['Playfair_Display'] text-xl font-bold">Fashion Jury</a>
+                <div class="flex space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-black">Home</a>
+                    <a href="/collection.html" class="text-gray-600 hover:text-black">Collection</a>
+                    <a href="/shop.html" class="text-gray-600 hover:text-black">Shop</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Designer Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- Left: Designer Image -->
+                <div>
+                    <div class="aspect-w-4 aspect-h-5 bg-gray-100">
+                        <div class="flex items-center justify-center text-gray-500">
+                            Designer Portrait
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Designer Info -->
+                <div>
+                    <h1 class="text-4xl font-['Playfair_Display'] font-bold mb-6">About the Designer</h1>
+                    <div class="prose max-w-none">
+                        <p class="text-gray-600 mb-6">
+                            With a passion for sustainable fashion and innovative design, our designer brings a fresh perspective to contemporary fashion. Drawing inspiration from urban architecture and natural elements, each piece is thoughtfully crafted to blend functionality with artistic expression.
+                        </p>
+                        <p class="text-gray-600 mb-6">
+                            Having studied at prestigious design institutions and worked with leading fashion houses, the designer's approach combines traditional craftsmanship with modern sustainable practices.
+                        </p>
+                        <blockquote class="border-l-4 border-black pl-4 italic mb-6">
+                            "Fashion should be both a statement of artistic expression and a commitment to environmental responsibility."
+                        </blockquote>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="mt-8">
+                        <h2 class="text-xl font-medium mb-4">Contact</h2>
+                        <p class="text-gray-600">studio@fashionjury.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Philosophy -->
+            <div class="mb-16">
+                <h2 class="text-3xl font-['Playfair_Display'] font-bold mb-8">Design Philosophy</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-6">
+                        <h3 class="text-xl font-medium mb-4">Experimental</h3>
+                        <p class="text-gray-600">Pushing boundaries through innovative design techniques and unconventional material combinations.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6">
+                        <h3 class="text-xl font-medium mb-4">Wearable</h3>
+                        <p class="text-gray-600">Creating pieces that seamlessly blend into modern wardrobes while maintaining artistic integrity.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6">
+                        <h3 class="text-xl font-medium mb-4">Conceptual</h3>
+                        <p class="text-gray-600">Each collection tells a story, exploring themes of sustainability, identity, and contemporary culture.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mood Board -->
+            <div>
+                <h2 class="text-3xl font-['Playfair_Display'] font-bold mb-8">Inspiration & Mood</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <template x-data x-for="i in 8" :key="i">
+                        <div class="aspect-w-1 aspect-h-1 bg-gray-100">
+                            <div class="flex items-center justify-center text-gray-500 text-sm">
+                                Mood Image <span x-text="i"></span>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-black">Instagram</a>
+                    <a href="#" class="text-gray-600 hover:text-black">Lookbook</a>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-black text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-600 hover:text-black text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Alpine.js for x-for directive -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+</html> 

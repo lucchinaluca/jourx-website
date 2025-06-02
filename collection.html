@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Collection Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .scroll-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="/" class="font-['Playfair_Display'] text-xl font-bold">Fashion Jury</a>
+                <div class="flex space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-black">Home</a>
+                    <a href="/collection.html" class="text-black font-medium">Collection</a>
+                    <a href="/shop.html" class="text-gray-600 hover:text-black">Shop</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl font-['Playfair_Display'] font-bold mb-8">Fashion Collection Gallery</h1>
+            
+            <!-- Scrollable Gallery -->
+            <div class="scroll-container overflow-x-auto pb-4">
+                <div class="flex space-x-6" style="min-width: max-content;">
+                    <!-- Generate 25 fashion sketches -->
+                    <template x-for="i in 25" :key="i">
+                        <figure class="flex-none w-72 group relative">
+                            <div class="aspect-[3/4] bg-gray-200 mb-3 relative">
+                                <!-- Placeholder Image -->
+                                <div class="absolute inset-0 flex items-center justify-center text-gray-500">
+                                    <span class="text-sm">Sketch Coming Soon</span>
+                                </div>
+                                <!-- Hover Overlay -->
+                                <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                    <span class="text-white font-medium">View Larger</span>
+                                </div>
+                            </div>
+                            <figcaption>
+                                <h3 class="font-medium text-lg" x-text="'Look ' + i + ' - Sketch'"></h3>
+                                <p class="text-gray-600 text-sm mt-1">Innovative design exploring sustainable fashion concepts with modern silhouettes.</p>
+                            </figcaption>
+                        </figure>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-black">Instagram</a>
+                    <a href="#" class="text-gray-600 hover:text-black">Lookbook</a>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-black text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-600 hover:text-black text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Alpine.js for x-for directive -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+</html> 

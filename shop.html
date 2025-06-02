@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Shop - Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="/" class="font-['Playfair_Display'] text-xl font-bold">Fashion Jury</a>
+                <div class="flex space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-black">Home</a>
+                    <a href="/collection.html" class="text-gray-600 hover:text-black">Collection</a>
+                    <a href="/shop.html" class="text-black font-medium">Shop</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="px-4 sm:px-6 lg:px-8">
+                <h1 class="text-4xl font-['Playfair_Display'] font-bold mb-8">Fashion Shop – Preview</h1>
+            </div>
+
+            <!-- Shop Grid -->
+            <div class="px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Garments Column -->
+                <div>
+                    <h2 class="text-2xl font-['Playfair_Display'] mb-6">Garments</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Garment Items -->
+                        <template x-data x-for="i in 8" :key="i">
+                            <div class="group">
+                                <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative">
+                                    <div class="absolute inset-0 flex items-center justify-center text-gray-500">
+                                        Product Image
+                                    </div>
+                                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                        <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">More Info</span>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-medium mb-1" x-text="'Garment ' + i"></h3>
+                                <p class="text-gray-600 mb-2">$299.99</p>
+                                <button class="w-full bg-black text-white py-2 px-4 text-sm hover:bg-gray-800 transition-colors">
+                                    More Info
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Accessories Column -->
+                <div>
+                    <h2 class="text-2xl font-['Playfair_Display'] mb-6">Accessories</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Accessory Items -->
+                        <template x-data x-for="i in 6" :key="i">
+                            <div class="group">
+                                <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative">
+                                    <div class="absolute inset-0 flex items-center justify-center text-gray-500">
+                                        Accessory Image
+                                    </div>
+                                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                        <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">More Info</span>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-medium mb-1" x-text="'Accessory ' + i"></h3>
+                                <p class="text-gray-600 mb-2">$99.99</p>
+                                <button class="w-full bg-black text-white py-2 px-4 text-sm hover:bg-gray-800 transition-colors">
+                                    More Info
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 border-t">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-black">Instagram</a>
+                    <a href="#" class="text-gray-600 hover:text-black">Lookbook</a>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-black text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-600 hover:text-black text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Alpine.js for x-for directive -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+</html> 
