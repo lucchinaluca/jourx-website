@@ -6,20 +6,19 @@
     <title>Fashion Collection Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        .scroll-container::-webkit-scrollbar {
-            height: 8px;
+        .swiper {
+            width: 100%;
+            height: 600px;
         }
-        .scroll-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .scroll-container::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        .scroll-container::-webkit-scrollbar-thumb:hover {
-            background: #555;
+        .look-section:nth-child(even) {
+            background-color: #f8f8f8;
         }
     </style>
 </head>
@@ -39,35 +38,182 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="pt-20 pb-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <h1 class="text-4xl font-['Playfair_Display'] font-bold mb-8">Fashion Collection Gallery</h1>
-            
-            <!-- Scrollable Gallery -->
-            <div class="scroll-container overflow-x-auto pb-4">
-                <div class="flex space-x-6" style="min-width: max-content;">
-                    <!-- Generate 25 fashion sketches -->
-                    <template x-for="i in 25" :key="i">
-                        <figure class="flex-none w-72 group relative">
-                            <div class="aspect-[3/4] bg-gray-200 mb-3 relative">
-                                <!-- Placeholder Image -->
-                                <div class="absolute inset-0 flex items-center justify-center text-gray-500">
-                                    <span class="text-sm">Sketch Coming Soon</span>
-                                </div>
-                                <!-- Hover Overlay -->
-                                <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                    <span class="text-white font-medium">View Larger</span>
-                                </div>
-                            </div>
-                            <figcaption>
-                                <h3 class="font-medium text-lg" x-text="'Look ' + i + ' - Sketch'"></h3>
-                                <p class="text-gray-600 text-sm mt-1">Innovative design exploring sustainable fashion concepts with modern silhouettes.</p>
-                            </figcaption>
-                        </figure>
-                    </template>
+    <main class="pt-20">
+        <!-- Collection Overview -->
+        <section class="py-16 bg-black text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-5xl font-['Playfair_Display'] font-bold mb-6">Spring/Summer 2024</h1>
+                <p class="text-xl text-gray-300 max-w-2xl">A curated collection of four distinctive looks exploring the intersection of sustainable fashion and contemporary design.</p>
+            </div>
+        </section>
+
+        <!-- Look 1 -->
+        <section class="look-section py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-['Playfair_Display'] font-bold mb-8">Look 1: Urban Sustainability</h2>
+                
+                <!-- Slider -->
+                <div class="swiper look1-slider mb-12">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+1+-+Front" alt="Look 1 Front View">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+1+-+Back" alt="Look 1 Back View">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+1+-+Detail" alt="Look 1 Details">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+
+                <!-- Description -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-medium mb-4">Design Concept</h3>
+                        <p class="text-gray-600 mb-6">This look embodies the marriage of urban sophistication and sustainable practices. The silhouette draws inspiration from metropolitan architecture while incorporating recycled materials and zero-waste pattern cutting techniques.</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Recycled polyester blend fabric</li>
+                            <li>• Zero-waste pattern construction</li>
+                            <li>• Modular design elements</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium mb-4">Designer's Notes</h3>
+                        <p class="text-gray-600 mb-6">"The challenge was to create something that feels luxurious and contemporary while maintaining our commitment to sustainable practices. Each detail has been carefully considered to minimize waste while maximizing impact."</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Look 2 -->
+        <section class="look-section py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-['Playfair_Display'] font-bold mb-8">Look 2: Ethereal Evolution</h2>
+                
+                <!-- Slider -->
+                <div class="swiper look2-slider mb-12">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+2+-+Front" alt="Look 2 Front View">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+2+-+Back" alt="Look 2 Back View">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+2+-+Detail" alt="Look 2 Details">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+
+                <!-- Description -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-medium mb-4">Design Concept</h3>
+                        <p class="text-gray-600 mb-6">Ethereal Evolution represents the delicate balance between nature and innovation. Flowing silhouettes meet structured elements in this transformative piece that challenges traditional fashion boundaries.</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Organic silk and bamboo blend</li>
+                            <li>• Natural dying process</li>
+                            <li>• Biodegradable materials</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium mb-4">Designer's Notes</h3>
+                        <p class="text-gray-600 mb-6">"This piece embodies the ethereal quality we sought to capture while maintaining practical wearability. The natural materials tell their own story through movement and light."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Look 3 -->
+        <section class="look-section py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-['Playfair_Display'] font-bold mb-8">Look 3: Structured Fluidity</h2>
+                
+                <!-- Slider -->
+                <div class="swiper look3-slider mb-12">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+3+-+Front" alt="Look 3 Front View">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+3+-+Back" alt="Look 3 Back View">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+3+-+Detail" alt="Look 3 Details">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+
+                <!-- Description -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-medium mb-4">Design Concept</h3>
+                        <p class="text-gray-600 mb-6">Structured Fluidity explores the contrast between rigid architectural forms and flowing organic elements. This look challenges conventional silhouettes while maintaining practical functionality.</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Innovative textile engineering</li>
+                            <li>• Sustainable tech fabrics</li>
+                            <li>• Adaptable design elements</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium mb-4">Designer's Notes</h3>
+                        <p class="text-gray-600 mb-6">"The juxtaposition of structure and fluidity creates a dynamic tension that defines this piece. Each element has been carefully considered to create a harmonious whole."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Look 4 -->
+        <section class="look-section py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-['Playfair_Display'] font-bold mb-8">Look 4: Avant-Garde Heritage</h2>
+                
+                <!-- Slider -->
+                <div class="swiper look4-slider mb-12">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+4+-+Front" alt="Look 4 Front View">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+4+-+Back" alt="Look 4 Back View">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="https://placehold.co/1920x1080?text=Look+4+-+Detail" alt="Look 4 Details">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+
+                <!-- Description -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-medium mb-4">Design Concept</h3>
+                        <p class="text-gray-600 mb-6">Avant-Garde Heritage merges traditional craftsmanship with forward-thinking design. This piece pays homage to fashion heritage while pushing boundaries with modern techniques and materials.</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Heritage craft techniques</li>
+                            <li>• Modern sustainable materials</li>
+                            <li>• Innovative construction methods</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium mb-4">Designer's Notes</h3>
+                        <p class="text-gray-600 mb-6">"This final look represents the culmination of our exploration into sustainable luxury. It's a testament to how traditional techniques can be reimagined for the modern era."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -86,7 +232,28 @@
         </div>
     </footer>
 
-    <!-- Alpine.js for x-for directive -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper for each look
+        const swiperOptions = {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        };
+
+        new Swiper('.look1-slider', swiperOptions);
+        new Swiper('.look2-slider', swiperOptions);
+        new Swiper('.look3-slider', swiperOptions);
+        new Swiper('.look4-slider', swiperOptions);
+    </script>
 </body>
 </html> 
