@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion Shop - Preview</title>
+    <title>Fashion Shop - Collection Items</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -24,61 +24,131 @@
 
     <!-- Main Content -->
     <main class="pt-20 pb-12">
-        <div class="max-w-7xl mx-auto">
-            <div class="px-4 sm:px-6 lg:px-8">
-                <h1 class="text-4xl font-['Playfair_Display'] font-bold mb-8">Fashion Shop – Preview</h1>
-            </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-['Playfair_Display'] font-bold mb-12">Shop Collection</h1>
 
             <!-- Shop Grid -->
-            <div class="px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Garments Column -->
-                <div>
-                    <h2 class="text-2xl font-['Playfair_Display'] mb-6">Garments</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <!-- Garment Items -->
-                        <template x-data x-for="i in 8" :key="i">
-                            <div class="group">
-                                <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative">
-                                    <div class="absolute inset-0 flex items-center justify-center text-gray-500">
-                                        Product Image
-                                    </div>
-                                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                                        <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">More Info</span>
-                                    </div>
-                                </div>
-                                <h3 class="text-lg font-medium mb-1" x-text="'Garment ' + i"></h3>
-                                <p class="text-gray-600 mb-2">$299.99</p>
-                                <button class="w-full bg-black text-white py-2 px-4 text-sm hover:bg-gray-800 transition-colors">
-                                    More Info
-                                </button>
-                            </div>
-                        </template>
+            <!-- REPLACE IMAGES: Use actual product images in the src attributes below -->
+            <!-- REPLACE TEXT: Update product names and prices in the data-product-info attributes -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="group" data-product-info='{"id": "1", "name": "Sustainable Blazer", "price": "599.99", "description": "Signature piece with innovative eco-friendly design"}'>
+                    <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
+                        <img src="https://placehold.co/800x1000?text=Product+1" alt="Product 1" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
+                        </div>
                     </div>
+                    <h3 class="text-lg font-medium mb-1">Sustainable Blazer</h3>
+                    <p class="text-gray-600 mb-2">$599.99</p>
                 </div>
 
-                <!-- Accessories Column -->
-                <div>
-                    <h2 class="text-2xl font-['Playfair_Display'] mb-6">Accessories</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <!-- Accessory Items -->
-                        <template x-data x-for="i in 6" :key="i">
-                            <div class="group">
-                                <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative">
-                                    <div class="absolute inset-0 flex items-center justify-center text-gray-500">
-                                        Accessory Image
-                                    </div>
-                                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                                        <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">More Info</span>
-                                    </div>
-                                </div>
-                                <h3 class="text-lg font-medium mb-1" x-text="'Accessory ' + i"></h3>
-                                <p class="text-gray-600 mb-2">$99.99</p>
-                                <button class="w-full bg-black text-white py-2 px-4 text-sm hover:bg-gray-800 transition-colors">
-                                    More Info
-                                </button>
-                            </div>
-                        </template>
+                <!-- Product 2 -->
+                <div class="group" data-product-info='{"id": "2", "name": "Eco-conscious Dress", "price": "499.99", "description": "Modern silhouette with recycled materials"}'>
+                    <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
+                        <img src="https://placehold.co/800x1000?text=Product+2" alt="Product 2" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
+                        </div>
                     </div>
+                    <h3 class="text-lg font-medium mb-1">Eco-conscious Dress</h3>
+                    <p class="text-gray-600 mb-2">$499.99</p>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group" data-product-info='{"id": "3", "name": "Recycled Wool Coat", "price": "799.99", "description": "Premium outerwear with sustainable construction"}'>
+                    <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
+                        <img src="https://placehold.co/800x1000?text=Product+3" alt="Product 3" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium mb-1">Recycled Wool Coat</h3>
+                    <p class="text-gray-600 mb-2">$799.99</p>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group" data-product-info='{"id": "4", "name": "Organic Cotton Blouse", "price": "299.99", "description": "Lightweight and breathable sustainable fashion"}'>
+                    <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
+                        <img src="https://placehold.co/800x1000?text=Product+4" alt="Product 4" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium mb-1">Organic Cotton Blouse</h3>
+                    <p class="text-gray-600 mb-2">$299.99</p>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="group" data-product-info='{"id": "5", "name": "Sustainable Trousers", "price": "399.99", "description": "Versatile design with eco-friendly materials"}'>
+                    <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
+                        <img src="https://placehold.co/800x1000?text=Product+5" alt="Product 5" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium mb-1">Sustainable Trousers</h3>
+                    <p class="text-gray-600 mb-2">$399.99</p>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="group" data-product-info='{"id": "6", "name": "Eco Knit Sweater", "price": "449.99", "description": "Cozy and sustainable knitwear"}'>
+                    <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
+                        <img src="https://placehold.co/800x1000?text=Product+6" alt="Product 6" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium mb-1">Eco Knit Sweater</h3>
+                    <p class="text-gray-600 mb-2">$449.99</p>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="group" data-product-info='{"id": "7", "name": "Recycled Denim Jacket", "price": "549.99", "description": "Classic style with sustainable denim"}'>
+                    <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
+                        <img src="https://placehold.co/800x1000?text=Product+7" alt="Product 7" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium mb-1">Recycled Denim Jacket</h3>
+                    <p class="text-gray-600 mb-2">$549.99</p>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="group" data-product-info='{"id": "8", "name": "Sustainable Skirt", "price": "349.99", "description": "Elegant design with eco-conscious materials"}'>
+                    <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
+                        <img src="https://placehold.co/800x1000?text=Product+8" alt="Product 8" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium mb-1">Sustainable Skirt</h3>
+                    <p class="text-gray-600 mb-2">$349.99</p>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="group" data-product-info='{"id": "9", "name": "Eco Evening Gown", "price": "899.99", "description": "Luxurious sustainable formal wear"}'>
+                    <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
+                        <img src="https://placehold.co/800x1000?text=Product+9" alt="Product 9" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium mb-1">Eco Evening Gown</h3>
+                    <p class="text-gray-600 mb-2">$899.99</p>
+                </div>
+
+                <!-- Product 10 -->
+                <div class="group" data-product-info='{"id": "10", "name": "Sustainable Jumpsuit", "price": "649.99", "description": "Modern sustainable one-piece design"}'>
+                    <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
+                        <img src="https://placehold.co/800x1000?text=Product+10" alt="Product 10" class="object-cover w-full h-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                            <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-medium mb-1">Sustainable Jumpsuit</h3>
+                    <p class="text-gray-600 mb-2">$649.99</p>
                 </div>
             </div>
         </div>
@@ -100,7 +170,23 @@
         </div>
     </footer>
 
-    <!-- Alpine.js for x-for directive -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Product Data Handler -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const productLinks = document.querySelectorAll('.group a');
+            
+            productLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productData = this.closest('.group').dataset.productInfo;
+                    if (productData) {
+                        // Store product data in sessionStorage for the product page
+                        sessionStorage.setItem('currentProduct', productData);
+                        window.location.href = 'product.html';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

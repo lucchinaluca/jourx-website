@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Look #1 – Product Page</title>
+    <title>Product Details - Fashion Jury</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -30,26 +30,30 @@
                 <div>
                     <!-- Main Image -->
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4">
-                        <div class="flex items-center justify-center text-gray-500">
-                            Main Product Image
-                        </div>
+                        <img id="mainImage" src="https://placehold.co/800x1000" alt="Product Main Image" class="w-full h-full object-cover">
                     </div>
                     <!-- Thumbnail Grid -->
                     <div class="grid grid-cols-4 gap-4">
-                        <template x-data x-for="i in 4" :key="i">
-                            <button class="aspect-w-1 aspect-h-1 bg-gray-100 focus:ring-2 ring-black">
-                                <div class="flex items-center justify-center text-gray-500 text-sm">
-                                    View <span x-text="i"></span>
-                                </div>
-                            </button>
-                        </template>
+                        <button class="aspect-w-1 aspect-h-1 bg-gray-100 focus:ring-2 ring-black">
+                            <img src="https://placehold.co/400x400?text=Detail+1" alt="Detail 1" class="w-full h-full object-cover">
+                        </button>
+                        <button class="aspect-w-1 aspect-h-1 bg-gray-100 focus:ring-2 ring-black">
+                            <img src="https://placehold.co/400x400?text=Detail+2" alt="Detail 2" class="w-full h-full object-cover">
+                        </button>
+                        <button class="aspect-w-1 aspect-h-1 bg-gray-100 focus:ring-2 ring-black">
+                            <img src="https://placehold.co/400x400?text=Detail+3" alt="Detail 3" class="w-full h-full object-cover">
+                        </button>
+                        <button class="aspect-w-1 aspect-h-1 bg-gray-100 focus:ring-2 ring-black">
+                            <img src="https://placehold.co/400x400?text=Detail+4" alt="Detail 4" class="w-full h-full object-cover">
+                        </button>
                     </div>
                 </div>
 
                 <!-- Right Column - Product Info -->
                 <div>
-                    <h1 class="text-4xl font-['Playfair_Display'] font-bold mb-2">Sustainable Blazer</h1>
-                    <p class="text-gray-600 mb-6">Spring/Summer 2024</p>
+                    <h1 id="productName" class="text-4xl font-['Playfair_Display'] font-bold mb-2">Loading...</h1>
+                    <p class="text-gray-600 mb-2">Spring/Summer 2024</p>
+                    <p id="productPrice" class="text-2xl font-medium mb-6">Loading...</p>
                     
                     <!-- Size Selection -->
                     <div class="mb-8">
@@ -85,15 +89,14 @@
                     <!-- Description -->
                     <div class="prose max-w-none">
                         <h2 class="text-lg font-medium mb-4">Description</h2>
-                        <p class="text-gray-600 mb-4">
-                            A sustainable blazer crafted from recycled materials, featuring clean lines and modern tailoring. Perfect for both casual and formal occasions.
-                        </p>
+                        <p id="productDescription" class="text-gray-600 mb-4">Loading...</p>
+                        
                         <h3 class="text-lg font-medium mb-2">Features</h3>
                         <ul class="list-disc list-inside text-gray-600 mb-4">
-                            <li>Recycled polyester blend</li>
-                            <li>Sustainable construction</li>
-                            <li>Modern fit</li>
-                            <li>Interior pockets</li>
+                            <li>Sustainable materials</li>
+                            <li>Ethical production</li>
+                            <li>Modern design</li>
+                            <li>Premium quality</li>
                         </ul>
                     </div>
 
@@ -145,27 +148,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Related Items -->
-            <div class="mt-16">
-                <h2 class="text-2xl font-['Playfair_Display'] mb-8">Related Items</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <template x-data x-for="i in 3" :key="i">
-                        <div class="group">
-                            <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative">
-                                <div class="absolute inset-0 flex items-center justify-center text-gray-500">
-                                    Related Product Image
-                                </div>
-                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                                    <span class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Details</span>
-                                </div>
-                            </div>
-                            <h3 class="text-lg font-medium mb-1" x-text="'Related Item ' + i"></h3>
-                            <p class="text-gray-600">$299.99</p>
-                        </div>
-                    </template>
-                </div>
-            </div>
         </div>
     </main>
 
@@ -185,7 +167,39 @@
         </div>
     </footer>
 
-    <!-- Alpine.js for x-for directive -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Product Data Handler -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get product data from sessionStorage
+            const productData = JSON.parse(sessionStorage.getItem('currentProduct') || '{}');
+            
+            if (Object.keys(productData).length === 0) {
+                window.location.href = 'shop.html';
+                return;
+            }
+
+            // Update page content with product data
+            document.title = `${productData.name} - Fashion Jury`;
+            document.getElementById('productName').textContent = productData.name;
+            document.getElementById('productPrice').textContent = `$${productData.price}`;
+            document.getElementById('productDescription').textContent = productData.description;
+            
+            // Update main image with product-specific placeholder
+            document.getElementById('mainImage').src = `https://placehold.co/800x1000?text=${encodeURIComponent(productData.name)}`;
+            
+            // Handle thumbnail clicks
+            const thumbnails = document.querySelectorAll('.grid button');
+            thumbnails.forEach((thumb, index) => {
+                const img = thumb.querySelector('img');
+                img.src = `https://placehold.co/400x400?text=${encodeURIComponent(productData.name)}+Detail+${index + 1}`;
+                
+                thumb.addEventListener('click', function() {
+                    document.getElementById('mainImage').src = img.src.replace('400x400', '800x1000');
+                    thumbnails.forEach(t => t.classList.remove('ring-2'));
+                    this.classList.add('ring-2');
+                });
+            });
+        });
+    </script>
 </body>
 </html> 
