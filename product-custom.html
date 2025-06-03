@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details - Fashion Jury</title>
+    <title>Custom Product Details - Jour X</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -59,22 +59,6 @@
                     <p class="text-gray-600 mb-2">Source de vie</p>
                     <p id="productPrice" class="text-2xl font-medium mb-6">Loading...</p>
                     
-                    <!-- Size Selection -->
-                    <div class="mb-8">
-                        <h2 class="text-lg font-medium mb-4">Size</h2>
-                        <div class="flex space-x-4 mb-4">
-                            <button class="px-6 py-2 border-2 border-black bg-black text-white">Straight</button>
-                            <button class="px-6 py-2 border-2 border-black text-black hover:bg-black hover:text-white transition-colors">Curvy</button>
-                        </div>
-                        <div class="grid grid-cols-5 gap-2">
-                            <button class="py-2 border-2 border-black text-black hover:bg-black hover:text-white transition-colors">XS</button>
-                            <button class="py-2 border-2 border-black text-black hover:bg-black hover:text-white transition-colors">S</button>
-                            <button class="py-2 border-2 border-black text-black hover:bg-black hover:text-white transition-colors">M</button>
-                            <button class="py-2 border-2 border-black text-black hover:bg-black hover:text-white transition-colors">L</button>
-                            <button class="py-2 border-2 border-black text-black hover:bg-black hover:text-white transition-colors">XL</button>
-                        </div>
-                    </div>
-
                     <!-- Color Selection -->
                     <div class="mb-8">
                         <h2 class="text-lg font-medium mb-4">Color</h2>
@@ -85,10 +69,33 @@
                         </div>
                     </div>
 
-                    <!-- Add to Cart -->
-                    <button class="w-full bg-black text-white py-4 text-lg mb-8 hover:bg-gray-800 transition-colors">
-                        Add to Cart
-                    </button>
+                    <!-- Custom Creation Form -->
+                    <div class="bg-gray-50 p-6 mb-8">
+                        <h2 class="text-xl font-medium mb-6">Custom Creation Request</h2>
+                        <form id="customForm" class="space-y-4">
+                            <div>
+                                <label for="customerEmail" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+                                <input type="email" id="customerEmail" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-black focus:border-black">
+                            </div>
+                            
+                            <div>
+                                <label for="measurements" class="block text-sm font-medium text-gray-700 mb-1">Your Measurements</label>
+                                <textarea id="measurements" rows="4" placeholder="Please provide your detailed measurements..."
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-black focus:border-black"></textarea>
+                            </div>
+
+                            <div>
+                                <label for="customization" class="block text-sm font-medium text-gray-700 mb-1">Customization Notes</label>
+                                <textarea id="customization" rows="4" placeholder="Any specific requirements or modifications..."
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-black focus:border-black"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-black text-white py-4 text-lg hover:bg-gray-800 transition-colors">
+                                Request Custom Creation
+                            </button>
+                        </form>
+                    </div>
 
                     <!-- Description -->
                     <div class="prose max-w-none">
@@ -97,58 +104,11 @@
                         
                         <h3 class="text-lg font-medium mb-2">Features</h3>
                         <ul class="list-disc list-inside text-gray-600 mb-4">
+                            <li>Made-to-measure</li>
                             <li>Sustainable materials</li>
                             <li>Ethical production</li>
-                            <li>Modern design</li>
                             <li>Premium quality</li>
                         </ul>
-                    </div>
-
-                    <!-- Size Guide -->
-                    <div class="mt-8 p-6 bg-gray-50">
-                        <h2 class="text-lg font-medium mb-4">Size Guide</h2>
-                        <table class="w-full text-sm">
-                            <thead>
-                                <tr class="border-b">
-                                    <th class="text-left py-2">Size</th>
-                                    <th class="text-left py-2">Bust</th>
-                                    <th class="text-left py-2">Waist</th>
-                                    <th class="text-left py-2">Hip</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b">
-                                    <td class="py-2">XS</td>
-                                    <td class="py-2">32"</td>
-                                    <td class="py-2">24"</td>
-                                    <td class="py-2">34"</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="py-2">S</td>
-                                    <td class="py-2">34"</td>
-                                    <td class="py-2">26"</td>
-                                    <td class="py-2">36"</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="py-2">M</td>
-                                    <td class="py-2">36"</td>
-                                    <td class="py-2">28"</td>
-                                    <td class="py-2">38"</td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="py-2">L</td>
-                                    <td class="py-2">38"</td>
-                                    <td class="py-2">30"</td>
-                                    <td class="py-2">40"</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-2">XL</td>
-                                    <td class="py-2">40"</td>
-                                    <td class="py-2">32"</td>
-                                    <td class="py-2">42"</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
@@ -181,9 +141,9 @@
             }
 
             // Update page content with product data
-            document.title = `${productData.name} - Fashion Jury`;
+            document.title = `${productData.name} - Custom Creation - Jour X`;
             document.getElementById('productName').textContent = productData.name;
-            document.getElementById('productPrice').textContent = `$${productData.price}`;
+            document.getElementById('productPrice').textContent = `Starting from $${productData.price}`;
             document.getElementById('productDescription').textContent = productData.description;
             
             // Update main image with product-specific placeholder
@@ -200,6 +160,25 @@
                     thumbnails.forEach(t => t.classList.remove('ring-2'));
                     this.classList.add('ring-2');
                 });
+            });
+
+            // Handle custom form submission
+            document.getElementById('customForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('customerEmail').value;
+                const measurements = document.getElementById('measurements').value;
+                const customization = document.getElementById('customization').value;
+
+                // In a real implementation, you would send this to your server
+                console.log('Custom Creation Request:', {
+                    product: productData.name,
+                    email,
+                    measurements,
+                    customization
+                });
+
+                alert('Thank you for your custom creation request! We will contact you shortly to discuss the details.');
+                this.reset();
             });
         });
     </script>
