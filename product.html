@@ -62,10 +62,6 @@
                     <!-- Size Selection -->
                     <div class="mb-8">
                         <h2 class="text-lg font-medium mb-4">Size</h2>
-                        <div class="flex space-x-4 mb-4">
-                            <button class="px-6 py-2 border-2 border-black bg-black text-white">Straight</button>
-                            <button class="px-6 py-2 border-2 border-black text-black hover:bg-black hover:text-white transition-colors">Curvy</button>
-                        </div>
                         <div class="grid grid-cols-5 gap-2">
                             <button class="py-2 border-2 border-black text-black hover:bg-black hover:text-white transition-colors">XS</button>
                             <button class="py-2 border-2 border-black text-black hover:bg-black hover:text-white transition-colors">S</button>
@@ -171,37 +167,62 @@
 
     <!-- Product Data Handler -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get product data from sessionStorage
+        document.addEventListener('DOMContentLoaded', function () {
             const productData = JSON.parse(sessionStorage.getItem('currentProduct') || '{}');
-            
-            if (Object.keys(productData).length === 0) {
+            if (!productData.name || !productData.images) {
                 window.location.href = 'shop.html';
                 return;
             }
-
-            // Update page content with product data
-            document.title = `${productData.name} - Fashion Jury`;
-            document.getElementById('productName').textContent = productData.name;
-            document.getElementById('productPrice').textContent = `$${productData.price}`;
-            document.getElementById('productDescription').textContent = productData.description;
-            
-            // Update main image with product-specific placeholder
-            document.getElementById('mainImage').src = `https://placehold.co/800x1000?text=${encodeURIComponent(productData.name)}`;
-            
-            // Handle thumbnail clicks
+    
+            // Setup
+            let currentColor = Object.keys(productData.images)[0];
+            const productNameEl = document.getElementById('productName');
+            const productPriceEl = document.getElementById('productPrice');
+            const productDescEl = document.getElementById('productDescription');
+            const mainImageEl = document.getElementById('mainImage');
             const thumbnails = document.querySelectorAll('.grid button');
-            thumbnails.forEach((thumb, index) => {
-                const img = thumb.querySelector('img');
-                img.src = `https://placehold.co/400x400?text=${encodeURIComponent(productData.name)}+Detail+${index + 1}`;
-                
-                thumb.addEventListener('click', function() {
-                    document.getElementById('mainImage').src = img.src.replace('400x400', '800x1000');
-                    thumbnails.forEach(t => t.classList.remove('ring-2'));
-                    this.classList.add('ring-2');
+            const colorContainer = document.querySelector('.mb-8 .flex.space-x-4');
+            colorContainer.innerHTML = ''; // Clear default hardcoded buttons
+    
+            // Generate color buttons
+            Object.keys(productData.images).forEach((colorKey, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-8 h-8 rounded-full ring-offset-2 {idx === 0 ? 'ring-2 ring-black' : ''}€`;
+                btn.style.backgroundColor = colorKey === 'black' ? '#000' : (colorKey === 'gray' ? '#aaa' : colorKey);
+                btn.title = colorKey;
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.mb-8 .flex.space-x-4 button').forEach(b => b.classList.remove('ring-2'));
+                    btn.classList.add('ring-2');
+                    currentColor = colorKey;
+                    updateImages(colorKey);
                 });
+                colorContainer.appendChild(btn);
             });
+    
+            // Update images based on color
+            function updateImages(color) {
+                const images = productData.images[color];
+                if (!images || images.length < 5) return;
+                mainImageEl.src = images[0];
+                thumbnails.forEach((thumb, index) => {
+                    const img = thumb.querySelector('img');
+                    img.src = images[index + 1];
+                    thumb.onclick = () => {
+                        mainImageEl.src = images[index + 1].replace('400x400', '800x1000');
+                        thumbnails.forEach(t => t.classList.remove('ring-2'));
+                        thumb.classList.add('ring-2');
+                    };
+                });
+            }
+    
+            // Set initial content
+            document.title = `${productData.name} - Fashion Jury`;
+            productNameEl.textContent = productData.name;
+            productPriceEl.textContent = `$${productData.price}`;
+            productDescEl.textContent = productData.description;
+    
+            updateImages(currentColor);
         });
-    </script>
+    </script>    
 </body>
 </html> 

@@ -30,133 +30,415 @@
     <main class="pt-28 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-4xl font-['Playfair_Display'] font-bold mb-12">Shop Collection</h1>
-
+    
             <!-- Shop Grid -->
-            <!-- REPLACE IMAGES: Use actual product images in the src attributes below -->
-            <!-- REPLACE TEXT: Update product names and prices in the data-product-info attributes -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Product 1 -->
-                <div class="group" data-product-info='{"id": "1", "name": "Atlas Blouse", "price": "599.99", "description": "Signature piece with innovative eco-friendly design"}'>
+                <div class="group" data-product-info='{
+                    "id": "1",
+                    "name": "Atlas Blouse",
+                    "price": "599.99",
+                    "description": "Signature piece with innovative eco-friendly design",
+                    "colors": [{"name": "Eucalyptus", "hex": "#D4E9E2"}, {"name": "Rosewood", "hex": "#65000B"}, {"name": "Bone", "hex": "#E3DCCB"}],
+                    "images": {
+                        "Eucalyptus": [
+                            "https://placehold.co/800x1000/#D4E9E2/000000?text=Atlas+Blouse",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+1",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+2",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+3",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+4"
+                        ],
+                        "Rosewood": [
+                            "https://placehold.co/800x1000/#65000B/FFFFFF?text=Rosewood+Main",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+1",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+2",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+3",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+4"
+                        ],
+                        "Bone": [
+                            "https://placehold.co/800x1000/#E3DCCB/000000?text=Bone+Main",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+1",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+2",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+3",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+4"
+                        ]
+                    }
+                }'>
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
-                        <img src="https://placehold.co/800x1000?text=Product+1" alt="Product 1" class="object-cover w-full h-full">
+                        <img src="https://placehold.co/800x1000/#D4E9E2/000000?text=Atlas+Blouse" alt="Atlas Blouse" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <a href="product-custom.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
                         </div>
                     </div>
                     <h3 class="text-lg font-medium mb-1">Atlas Blouse</h3>
-                    <p class="text-gray-600 mb-2">250€</p>
+                    <p class="text-gray-600 mb-2">599.99€</p>
                 </div>
 
                 <!-- Product 2 -->
-                <div class="group" data-product-info='{"id": "2", "name": "Bubble Jacket", "price": "499.99", "description": "Modern silhouette with recycled materials"}'>
+                <div class="group" data-product-info='{
+                    "id": "2",
+                    "name": "Bubble Jacket",
+                    "price": "499.99",
+                    "description": "Modern silhouette with recycled materials",
+                    "images": {
+                        "Eucalyptus": [
+                            "https://placehold.co/800x1000/#D4E9E2/000000?text=Bubble+Jacket",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+1",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+2",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+3",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+4"
+                        ],
+                        "Rosewood": [
+                            "https://placehold.co/800x1000/#65000B/FFFFFF?text=Rosewood+Main",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+1",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+2",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+3",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+4"
+                        ],
+                        "Bone": [
+                            "https://placehold.co/800x1000/#E3DCCB/000000?text=Bone+Main",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+1",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+2",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+3",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+4"
+                        ]
+                    }
+                }'>
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
-                        <img src="https://placehold.co/800x1000?text=Product+2" alt="Product 2" class="object-cover w-full h-full">
+                        <img src="https://placehold.co/800x1000/#D4E9E2/000000?text=Bubble+Jacket" alt="Bubble Jacket" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <a href="product-custom.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
                         </div>
                     </div>
                     <h3 class="text-lg font-medium mb-1">Bubble Jacket</h3>
-                    <p class="text-gray-600 mb-2">$499.99</p>
+                    <p class="text-gray-600 mb-2">499.99€</p>
                 </div>
 
                 <!-- Product 3 -->
-                <div class="group" data-product-info='{"id": "3", "name": "Fountain Pants", "price": "799.99", "description": "Premium outerwear with sustainable construction"}'>
+                <div class="group" data-product-info='{
+                    "id": "3",
+                    "name": "Fountain Pants",
+                    "price": "799.99",
+                    "description": "Premium outerwear with sustainable construction",
+                    "images": {
+                        "Eucalyptus": [
+                            "https://placehold.co/800x1000/#D4E9E2/000000?text=Fountain+Pants",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+1",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+2",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+3",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+4"
+                        ],
+                        "Rosewood": [
+                            "https://placehold.co/800x1000/#65000B/FFFFFF?text=Rosewood+Main",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+1",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+2",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+3",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+4"
+                        ],
+                        "Bone": [
+                            "https://placehold.co/800x1000/#E3DCCB/000000?text=Bone+Main",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+1",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+2",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+3",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+4"
+                        ]
+                    }
+                }'>
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
-                        <img src="https://placehold.co/800x1000?text=Product+3" alt="Product 3" class="object-cover w-full h-full">
+                        <img src="https://placehold.co/800x1000/#D4E9E2/000000?text=Fountain+Pants" alt="Fountain Pants" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <a href="product-custom.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
                         </div>
                     </div>
                     <h3 class="text-lg font-medium mb-1">Fountain Pants</h3>
-                    <p class="text-gray-600 mb-2">$799.99</p>
+                    <p class="text-gray-600 mb-2">799.99€</p>
                 </div>
 
                 <!-- Product 4 -->
-                <div class="group" data-product-info='{"id": "4", "name": "Gilled Vest", "price": "299.99", "description": "Lightweight and breathable sustainable fashion"}'>
+                <div class="group" data-product-info='{
+                    "id": "4",
+                    "name": "Gilled Vest",
+                    "price": "299.99",
+                    "description": "Lightweight and breathable sustainable fashion",
+                    "images": {
+                        "Eucalyptus": [
+                            "https://placehold.co/800x1000/#D4E9E2/000000?text=Gilled+Vest",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+1",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+2",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+3",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+4"
+                        ],
+                        "Rosewood": [
+                            "https://placehold.co/800x1000/#65000B/FFFFFF?text=Rosewood+Main",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+1",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+2",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+3",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+4"
+                        ],
+                        "Bone": [
+                            "https://placehold.co/800x1000/#E3DCCB/000000?text=Bone+Main",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+1",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+2",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+3",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+4"
+                        ]
+                    }
+                }'>
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
-                        <img src="https://placehold.co/800x1000?text=Product+4" alt="Product 4" class="object-cover w-full h-full">
+                        <img src="https://placehold.co/800x1000/#D4E9E2/000000?text=Gilled+Vest" alt="Gilled Vest" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <a href="product-custom.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
                         </div>
                     </div>
                     <h3 class="text-lg font-medium mb-1">Gilled Vest</h3>
-                    <p class="text-gray-600 mb-2">250€</p>
+                    <p class="text-gray-600 mb-2">299.99€</p>
                 </div>
 
                 <!-- Product 5 -->
-                <div class="group" data-product-info='{"id": "5", "name": "Ly Top", "price": "399.99", "description": "Versatile design with eco-friendly materials"}'>
+                <div class="group" data-product-info='{
+                    "id": "5",
+                    "name": "Ly Top",
+                    "price": "399.99",
+                    "description": "Versatile design with eco-friendly materials",
+                    "images": {
+                        "Eucalyptus": [
+                            "https://placehold.co/800x1000/#D4E9E2/000000?text=Ly+Top",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+1",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+2",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+3",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+4"
+                        ],
+                        "Rosewood": [
+                            "https://placehold.co/800x1000/#65000B/FFFFFF?text=Rosewood+Main",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+1",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+2",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+3",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+4"
+                        ],
+                        "Bone": [
+                            "https://placehold.co/800x1000/#E3DCCB/000000?text=Bone+Main",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+1",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+2",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+3",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+4"
+                        ]
+                    }
+                }'>
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
-                        <img src="https://placehold.co/800x1000?text=Product+5" alt="Product 5" class="object-cover w-full h-full">
+                        <img src="https://placehold.co/800x1000/#D4E9E2/000000?text=Ly+Top" alt="Ly Top" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
                         </div>
                     </div>
                     <h3 class="text-lg font-medium mb-1">Ly Top</h3>
-                    <p class="text-gray-600 mb-2">$399.99</p>
+                    <p class="text-gray-600 mb-2">399.99€</p>
                 </div>
 
+        
                 <!-- Product 6 -->
-                <div class="group" data-product-info='{"id": "6", "name": "Silvermist Skirt", "price": "449.99", "description": "Cozy and sustainable knitwear"}'>
+                <div class="group" data-product-info='{
+                    "id": "6",
+                    "name": "Silvermist Skirt",
+                    "price": "449.99",
+                    "description": "Cozy and sustainable knitwear with elegant draping",
+                    "images": {
+                        "Eucalyptus": [
+                            "https://placehold.co/800x1000/#D4E9E2/000000?text=Silvermist+Skirt",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+1",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+2",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+3",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+4"
+                        ],
+                        "Rosewood": [
+                            "https://placehold.co/800x1000/#65000B/FFFFFF?text=Rosewood+Main",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+1",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+2",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+3",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+4"
+                        ],
+                        "Bone": [
+                            "https://placehold.co/800x1000/#E3DCCB/000000?text=Bone+Main",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+1",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+2",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+3",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+4"
+                        ]
+                    }
+                }'>
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
-                        <img src="https://placehold.co/800x1000?text=Product+6" alt="Product 6" class="object-cover w-full h-full">
+                        <img src="https://placehold.co/800x1000/#D4E9E2/000000?text=Silvermist+Skirt" alt="Silvermist Skirt" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <a href="product-custom.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
                         </div>
                     </div>
                     <h3 class="text-lg font-medium mb-1">Silvermist Skirt</h3>
-                    <p class="text-gray-600 mb-2">$449.99</p>
+                    <p class="text-gray-600 mb-2">449.99€</p>
                 </div>
-
+    
                 <!-- Product 7 -->
-                <div class="group" data-product-info='{"id": "7", "name": "Silvermist Top", "price": "549.99", "description": "Classic style with sustainable denim"}'>
+                <div class="group" data-product-info='{
+                    "id": "7",
+                    "name": "Silvermist Top",
+                    "price": "549.99",
+                    "description": "Elegant sustainable top with modern silhouette",
+                    "images": {
+                        "Eucalyptus": [
+                            "https://placehold.co/800x1000/#D4E9E2/000000?text=Silvermist+Top",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+1",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+2",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+3",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+4"
+                        ],
+                        "Rosewood": [
+                            "https://placehold.co/800x1000/#65000B/FFFFFF?text=Rosewood+Main",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+1",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+2",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+3",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+4"
+                        ],
+                        "Bone": [
+                            "https://placehold.co/800x1000/#E3DCCB/000000?text=Bone+Main",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+1",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+2",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+3",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+4"
+                        ]
+                    }
+                }'>
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
-                        <img src="https://placehold.co/800x1000?text=Product+7" alt="Product 7" class="object-cover w-full h-full">
+                        <img src="https://placehold.co/800x1000/#D4E9E2/000000?text=Silvermist+Top" alt="Silvermist Top" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <a href="product-custom.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
                         </div>
                     </div>
                     <h3 class="text-lg font-medium mb-1">Silvermist Top</h3>
-                    <p class="text-gray-600 mb-2">$549.99</p>
+                    <p class="text-gray-600 mb-2">549.99€</p>
                 </div>
-
+    
                 <!-- Product 8 -->
-                <div class="group" data-product-info='{"id": "8", "name": "Siren Blouse", "price": "349.99", "description": "Elegant design with eco-conscious materials"}'>
+                <div class="group" data-product-info='{
+                    "id": "8",
+                    "name": "Siren Blouse",
+                    "price": "349.99",
+                    "description": "Elegant design with eco-conscious materials and flowing silhouette",
+                    "images": {
+                        "Eucalyptus": [
+                            "https://placehold.co/800x1000/#D4E9E2/000000?text=Siren+Blouse",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+1",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+2",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+3",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+4"
+                        ],
+                        "Rosewood": [
+                            "https://placehold.co/800x1000/#65000B/FFFFFF?text=Rosewood+Main",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+1",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+2",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+3",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+4"
+                        ],
+                        "Bone": [
+                            "https://placehold.co/800x1000/#E3DCCB/000000?text=Bone+Main",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+1",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+2",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+3",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+4"
+                        ]
+                    }
+                }'>
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
-                        <img src="https://placehold.co/800x1000?text=Product+8" alt="Product 8" class="object-cover w-full h-full">
+                        <img src="https://placehold.co/800x1000/#D4E9E2/000000?text=Siren+Blouse" alt="Siren Blouse" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <a href="product-custom.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
                         </div>
                     </div>
                     <h3 class="text-lg font-medium mb-1">Siren Blouse</h3>
-                    <p class="text-gray-600 mb-2">$349.99</p>
+                    <p class="text-gray-600 mb-2">349.99€</p>
                 </div>
-
+    
                 <!-- Product 9 -->
-                <div class="group" data-product-info='{"id": "9", "name": "S Wave Pants", "price": "899.99", "description": "Luxurious sustainable formal wear"}'>
+                <div class="group" data-product-info='{
+                    "id": "9",
+                    "name": "S Wave Pants",
+                    "price": "899.99",
+                    "description": "Luxurious sustainable formal wear with unique wave pattern",
+                    "images": {
+                        "Eucalyptus": [
+                            "https://placehold.co/800x1000/#D4E9E2/000000?text=S+Wave+Pants",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+1",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+2",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+3",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+4"
+                        ],
+                        "Rosewood": [
+                            "https://placehold.co/800x1000/#65000B/FFFFFF?text=Rosewood+Main",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+1",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+2",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+3",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+4"
+                        ],
+                        "Bone": [
+                            "https://placehold.co/800x1000/#E3DCCB/000000?text=Bone+Main",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+1",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+2",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+3",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+4"
+                        ]
+                    }
+                }'>
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
-                        <img src="https://placehold.co/800x1000?text=Product+9" alt="Product 9" class="object-cover w-full h-full">
+                        <img src="https://placehold.co/800x1000/#D4E9E2/000000?text=S+Wave+Pants" alt="S Wave Pants" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <a href="product-custom.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
                         </div>
                     </div>
                     <h3 class="text-lg font-medium mb-1">S Wave Pants</h3>
-                    <p class="text-gray-600 mb-2">$899.99</p>
+                    <p class="text-gray-600 mb-2">899.99€</p>
                 </div>
-
+    
                 <!-- Product 10 -->
-                <div class="group" data-product-info='{"id": "10", "name": "Sustainable Jumpsuit", "price": "649.99", "description": "Modern sustainable one-piece design"}'>
+                <div class="group" data-product-info='{
+                    "id": "10",
+                    "name": "Volante",
+                    "price": "649.99",
+                    "description": "Modern sustainable one-piece design with flowing details",
+                    "images": {
+                        "Eucalyptus": [
+                            "https://placehold.co/800x1000/#D4E9E2/000000?text=Volante",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+1",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+2",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+3",
+                            "https://placehold.co/400x400/#D4E9E2/000000?text=Detail+4"
+                        ],
+                        "Rosewood": [
+                            "https://placehold.co/800x1000/#65000B/FFFFFF?text=Rosewood+Main",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+1",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+2",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+3",
+                            "https://placehold.co/400x400/#65000B/FFFFFF?text=Rosewood+Detail+4"
+                        ],
+                        "Bone": [
+                            "https://placehold.co/800x1000/#E3DCCB/000000?text=Bone+Main",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+1",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+2",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+3",
+                            "https://placehold.co/400x400/#E3DCCB/000000?text=Bone+Detail+4"
+                        ]
+                    }
+                }'>
                     <div class="aspect-w-3 aspect-h-4 bg-gray-100 mb-4 relative overflow-hidden">
-                        <img src="https://placehold.co/800x1000?text=Product+10" alt="Product 10" class="object-cover w-full h-full">
+                        <img src="https://placehold.co/800x1000/#D4E9E2/000000?text=Volante" alt="Volante" class="object-cover w-full h-full">
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
                             <a href="product.html" class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-75 px-6 py-2">View Details</a>
                         </div>
                     </div>
                     <h3 class="text-lg font-medium mb-1">Volante</h3>
-                    <p class="text-gray-600 mb-2">$649.99</p>
+                    <p class="text-gray-600 mb-2">649.99€</p>
                 </div>
             </div>
         </div>
     </main>
+    
+      
 
     <!-- Footer -->
     <footer class="bg-gray-50 border-t">
