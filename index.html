@@ -51,16 +51,16 @@
         }
     </style>
     <!-- Hero Section -->
-    <section class="relative h-screen">
+    <section class="relative h-screen pt-24">
         <!-- Hero Background -->
-        <div class="absolute inset-0 bg-black">
+        <div class="absolute inset-0 top-24 bg-black">
             <div class="relative h-full">
                 <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-50 z-10"></div>
 
                 <!-- Video Container -->
-                <div class="video-container relative w-full h-full">
-                    <video id="heroVideo" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500" playsinline autoplay muted></video>
-                    <video id="nextVideo" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" playsinline muted></video>
+                <div class="video-container relative w-full h-full flex items-center justify-center">
+                    <video id="heroVideo" class="absolute w-auto h-auto max-w-full max-h-full object-contain opacity-100 transition-opacity duration-500" playsinline autoplay muted></video>
+                    <video id="nextVideo" class="absolute w-auto h-auto max-w-full max-h-full object-contain opacity-0 transition-opacity duration-500" playsinline muted></video>
                     <button id="muteButton">Unmute</button>
                 </div>
             </div>
