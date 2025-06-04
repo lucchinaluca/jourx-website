@@ -145,32 +145,39 @@
             const productDescEl = document.getElementById('productDescription');
             const thumbnails = document.querySelectorAll('.grid button');
             const colorContainer = document.querySelector('.mb-8 .flex.space-x-4');
-            colorContainer.innerHTML = '';
-    
+
             // Generate color buttons
-            Object.keys(productData.images).forEach((colorKey, idx) => {
+            const colors = productData.colors || Object.keys(productData.images).map(name => ({
+                name,
+                hex: (name === 'Eucalyptus') ? '#D4E9E2' : (name === 'Rosewood') ? '#65000B' : (name === 'Bone') ? '#E3DCCB' : '#000'
+            }));
+
+            colorContainer.innerHTML = '';
+
+            colors.forEach((colorObj, idx) => {
+                const colorKey = colorObj.name || colorObj;
                 const btn = document.createElement('button');
-                btn.className = `w-8 h-8 rounded-full ring-offset-2 {idx === 0 ? 'ring-2 ring-black' : ''}€`;
-                btn.style.backgroundColor = colorKey === 'black' ? '#000' : (colorKey === 'gray' ? '#aaa' : colorKey);
+                btn.className = `w-8 h-8 rounded-full ring-offset-2${idx === 0 ? ' ring-2 ring-black' : ''}`;
+                btn.style.backgroundColor = colorObj.hex;
                 btn.title = colorKey;
                 btn.addEventListener('click', () => {
-                    document.querySelectorAll('.mb-8 .flex.space-x-4 button').forEach(b => b.classList.remove('ring-2'));
-                    btn.classList.add('ring-2');
+                    document.querySelectorAll('.mb-8 .flex.space-x-4 button').forEach(b => b.classList.remove('ring-2', 'ring-black'));
+                    btn.classList.add('ring-2', 'ring-black');
                     currentColor = colorKey;
                     updateImages(colorKey);
                 });
                 colorContainer.appendChild(btn);
             });
-    
+
             function updateImages(color) {
                 const images = productData.images[color];
-                if (!images || images.length < 5) return;
+                if (!images) return;
                 mainImageEl.src = images[0];
                 thumbnails.forEach((thumb, index) => {
                     const img = thumb.querySelector('img');
-                    img.src = images[index + 1];
+                    img.src = images[index + 1] || images[0];
                     thumb.onclick = () => {
-                        mainImageEl.src = images[index + 1].replace('400x400', '800x1000');
+                        mainImageEl.src = images[index + 1] ? images[index + 1].replace('400x400', '800x1000') : images[0];
                         thumbnails.forEach(t => t.classList.remove('ring-2'));
                         thumb.classList.add('ring-2');
                     };
@@ -201,6 +208,5 @@
             });
         });
     </script>
-    
 </body>
 </html> 
