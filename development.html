@@ -57,12 +57,222 @@
 
     <!-- Main Content -->
     <main class="pt-28 pb-12">
+        
         <div class="max-w-7xl mx-auto">
             <h1 class="text-4xl font-['Playfair_Display'] font-bold mb-8">Design Process & Development</h1>
-            
+        </div>
+    
+        <style>
+            .video-container {
+                position: relative;
+            }
+
+            #muteButton {
+                position: absolute;
+                bottom: 30px;
+                right: 30px;
+                background-color: rgba(0, 0, 0, 0.6);
+                color: white;
+                padding: 8px 16px;
+                border: none;
+                cursor: pointer;
+                border-radius: 20px;
+                z-index: 30;
+                font-size: 14px;
+                transition: background-color 0.3s ease;
+            }
+
+            #muteButton:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+        </style>
+        <!-- Hero Section -->
+        <section class="relative h-screen">
+            <!-- Hero Background -->
+            <div class="absolute inset-0 bg-black">
+                <div class="relative h-full">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-50 z-10"></div>
+
+                    <!-- Video Container -->
+                    <div class="video-container relative w-full h-full">
+                        <video id="heroVideo" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500" playsinline autoplay muted></video>
+                        <video id="nextVideo" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" playsinline muted></video>
+                        <button id="muteButton">Unmute</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <script>
+            const videoSources = [
+                'images/part1.mkv',
+                'images/part2.mkv',
+                'images/part3.mkv'
+            ];
+
+            const heroVideo = document.getElementById('heroVideo');
+            const nextVideo = document.getElementById('nextVideo');
+            const muteButton = document.getElementById('muteButton');
+            let currentVideo = 0;
+            let isMuted = true; // Start muted for autoplay
+
+            // Configure videos
+            function setupVideo(video) {
+                video.muted = true; // Start muted for autoplay
+                video.controls = false;
+                video.volume = 1.0;
+            }
+
+            [heroVideo, nextVideo].forEach(setupVideo);
+
+            function updateMuteState(shouldMute) {
+                isMuted = shouldMute;
+                heroVideo.muted = shouldMute;
+                nextVideo.muted = shouldMute;
+                muteButton.textContent = shouldMute ? 'Unmute' : 'Mute';
+            }
+
+            function setVideoAudio(video, shouldPlay) {
+                if (!isMuted) {
+                    // If we're unmuted, only one video should have audio
+                    video.muted = !shouldPlay;
+                } else {
+                    // If we're in muted state, both videos stay muted
+                    video.muted = true;
+                }
+                video.volume = 1.0;
+            }
+
+            function toggleMute() {
+                updateMuteState(!isMuted);
+            }
+
+            function preloadNextVideo() {
+                const nextIndex = (currentVideo + 1) % videoSources.length;
+                const inactiveVideo = heroVideo.style.opacity === '1' ? nextVideo : heroVideo;
+                inactiveVideo.src = videoSources[nextIndex];
+                inactiveVideo.load();
+                // Ensure the preloaded video starts muted
+                inactiveVideo.muted = true;
+                inactiveVideo.volume = 1.0;
+            }
+
+            function switchVideos() {
+                const currentActiveVideo = heroVideo.style.opacity === '1' ? heroVideo : nextVideo;
+                const nextActiveVideo = heroVideo.style.opacity === '1' ? nextVideo : heroVideo;
+
+                // Mute the current video before starting the transition
+                setVideoAudio(currentActiveVideo, false);
+                
+                // Set up the next video's audio state
+                setVideoAudio(nextActiveVideo, true);
+
+                const playPromise = nextActiveVideo.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Crossfade between videos
+                        currentActiveVideo.style.opacity = '0';
+                        nextActiveVideo.style.opacity = '1';
+
+                        // Update current video index and preload next
+                        currentVideo = (currentVideo + 1) % videoSources.length;
+                        
+                        // Ensure the current video is fully muted after transition
+                        setTimeout(() => {
+                            currentActiveVideo.muted = true;
+                            preloadNextVideo();
+                        }, 500);
+                    }).catch(error => {
+                        console.error("Error during video switch:", error);
+                        // Reset audio states in case of error
+                        setVideoAudio(currentActiveVideo, true);
+                        setVideoAudio(nextActiveVideo, false);
+                    });
+                }
+            }
+
+            function initializeVideoPlayback() {
+                // Set up first video
+                heroVideo.src = videoSources[0];
+                heroVideo.style.opacity = '1';
+                nextVideo.style.opacity = '0';
+
+                // Ensure initial state is correct
+                updateMuteState(true); // Start muted for autoplay
+                setVideoAudio(heroVideo, true);
+                setVideoAudio(nextVideo, false);
+
+                // Start playing first video
+                heroVideo.play().then(() => {
+                    preloadNextVideo();
+                    
+                    // Set up video ended handlers
+                    [heroVideo, nextVideo].forEach(video => {
+                        video.addEventListener('ended', switchVideos);
+                    });
+                }).catch(error => {
+                    console.error("Video autoplay failed:", error);
+                });
+            }
+
+            // Set up mute button click handler
+            muteButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Try to resume audio context if suspended
+                if (typeof window.AudioContext !== 'undefined' || typeof window.webkitAudioContext !== 'undefined') {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    const audioCtx = new AudioContext();
+                    if (audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
+                }
+                
+                toggleMute();
+                
+                // Ensure only the currently visible video has audio
+                const currentActiveVideo = heroVideo.style.opacity === '1' ? heroVideo : nextVideo;
+                const inactiveVideo = heroVideo.style.opacity === '1' ? nextVideo : heroVideo;
+                setVideoAudio(currentActiveVideo, true);
+                setVideoAudio(inactiveVideo, false);
+                
+                // Ensure videos are playing
+                if (currentActiveVideo.paused) currentActiveVideo.play();
+            });
+
+            // Initialize when DOM is loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeVideoPlayback);
+            } else {
+                initializeVideoPlayback();
+            }
+
+            // Handle browser autoplay restrictions
+            const userInteractionEvents = ['click', 'touchend', 'keydown'];
+            function handleFirstInteraction() {
+                if (!isMuted) {
+                    [heroVideo, nextVideo].forEach(video => {
+                        video.muted = false;
+                        video.volume = 1.0;
+                    });
+                }
+                userInteractionEvents.forEach(event => {
+                    document.removeEventListener(event, handleFirstInteraction);
+                });
+            }
+
+            userInteractionEvents.forEach(event => {
+                document.addEventListener(event, handleFirstInteraction, { once: true });
+            });
+        </script>
+        
+        <div class="max-w-7xl mx-auto"></div>
             <!-- Development Stages Grid -->
             <div class="grid grid-cols-1 gap-8 max-w-5xl mx-auto">
-                                
+                                    
                 <!-- Motionboard -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-200">
@@ -147,7 +357,19 @@
                     </div>
                     <div class="p-6">
                         <h2 class="text-2xl font-['Playfair_Display'] mb-3">Look Lineup</h2>
-                        <img src="images\Development\look lineup with avatar\lineup.png" alt="Look 1 Front View">
+                        <div class="swiper look1-slider mb-14">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="images\Development\look_lineup\looklineup.webp" alt="Look 1 Front View">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\look_lineup\lineup.png" alt="Look 1 Front View">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -227,6 +449,44 @@
                                 <div class="swiper-slide">
                                     <img src="images\Development\techincal drawings\Untitled-39.webp" alt="Look 1 Front View" class="swiper-image">
                                 </div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- labeling & Packaging -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                        <div class="flex items-center justify-center text-gray-500"></div>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Labeling & Packaging</h2>
+                        <div class="swiper look1-slider mb-6">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="images\Development\Packaging\bag.webp" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\Packaging\hanger.webp" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\Packaging\labels.webp" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\Packaging\labels2.avif" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\Packaging\logo.webp" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\Packaging\tag-label.avif" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+
 
                             </div>
                             <div class="swiper-pagination"></div>
