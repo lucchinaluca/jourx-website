@@ -51,6 +51,11 @@
                             <img src="https://placehold.co/400x400?text=Detail+4" alt="Detail 4" class="w-full h-full object-cover">
                         </button>
                     </div>
+                    <!-- Video Section -->
+                    <div id="videoSection" class="mt-8 hidden">
+                        <div class="aspect-w-16 aspect-h-9 bg-gray-100">
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Right Column - Product Info -->
@@ -164,15 +169,16 @@
 
             function updateImages(colorIndex) {
                 const images = productData.colors[colorIndex].images;
+                const videos = productData.colors[colorIndex].videos || [];
                 if (!images || images.length === 0) return;
-                
+
                 // Set main image
                 mainImageEl.src = images[currentImageIndex];
-                
+
                 // Clear existing thumbnails
                 thumbnailsContainer.innerHTML = '';
-                
-                // Create thumbnails for ALL images
+
+                // Create thumbnails for images
                 images.forEach((image, index) => {
                     const button = document.createElement('button');
                     button.className = `aspect-w-1 aspect-h-1 bg-gray-100 focus:ring-2 ${index === currentImageIndex ? 'ring-2 ring-black' : ''}`;
@@ -192,6 +198,58 @@
                     
                     thumbnailsContainer.appendChild(button);
                 });
+
+                // Handle video section
+                const videoSection = document.getElementById('videoSection');
+                if (videos && videos.length > 0) {
+                    videoSection.innerHTML = ''; // Clear existing video
+                    videoSection.classList.remove('hidden');
+                    
+                    const videoContainer = document.createElement('div');
+                    videoContainer.className = 'aspect-w-16 aspect-h-9 bg-gray-100 relative';
+                    
+                    const video = document.createElement('video');
+                    video.src = videos[0]; // Use first video
+                    video.className = 'w-full h-full object-cover';
+                    video.controls = true;
+                    video.playsInline = true;
+                    video.loop = true;
+                    video.autoplay = true;
+                    video.muted = false;
+                    
+                    // Add loading indicator
+                    const loadingIndicator = document.createElement('div');
+                    loadingIndicator.className = 'absolute inset-0 flex items-center justify-center bg-gray-100';
+                    loadingIndicator.innerHTML = '<div class="animate-spin rounded-full h-12 w-12 border-4 border-black border-t-transparent"></div>';
+                    videoContainer.appendChild(loadingIndicator);
+                    
+                    // Handle video loading
+                    video.addEventListener('loadeddata', () => {
+                        loadingIndicator.remove();
+                        console.log('Video loaded successfully');
+                    });
+                    
+                    video.addEventListener('error', (e) => {
+                        console.error('Error loading video:', e);
+                        loadingIndicator.innerHTML = '<div class="text-red-500">Error loading video</div>';
+                    });
+                    
+                    videoContainer.appendChild(video);
+                    videoSection.appendChild(videoContainer);
+                    
+                    // Ensure video plays
+                    video.play().catch(err => {
+                        console.log('Autoplay prevented:', err);
+                        // If autoplay fails, try with muted
+                        video.muted = true;
+                        video.play().catch(err => {
+                            console.error('Even muted autoplay failed:', err);
+                        });
+                    });
+                } else {
+                    videoSection.classList.add('hidden');
+                    videoSection.innerHTML = '';
+                }
             }
 
             productNameEl.textContent = productData.name;
