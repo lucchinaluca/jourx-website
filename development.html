@@ -25,6 +25,35 @@
             </div>
         </div>
     </nav>
+    <style>
+        .image-container {
+            position: relative;
+            width: 600px; /* Adjust as needed */
+        }
+        
+        #zoom-lens {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            /*set the size of the lens equal to the zoom result div divided by the zoom level*/
+            width: 100px;
+            height: 100px;
+        }
+        
+        #zoom-result {
+            position: absolute;
+            /* position relative to the image: */
+            top: 0;
+            right: -200px;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #d4d4d4;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            z-index: 2;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 
     <!-- Main Content -->
     <main class="pt-28 pb-12">
@@ -33,7 +62,7 @@
             
             <!-- Development Stages Grid -->
             <div class="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
-                <!-- Inspiration -->
+                <!-- Concept -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-200">
                         <div class="flex items-center justify-center text-gray-500"><!---- set image here -->
@@ -50,7 +79,7 @@
                     </div>
                 </div>
 
-                <!-- Silhouette Study -->
+                <!-- sketches collection -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-200">
                         <div class="flex items-center justify-center text-gray-500">
@@ -58,12 +87,17 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Silhouette Study</h2>
-                        <p class="text-gray-600">Exploring form and proportion through initial sketches and draping experiments.</p>
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Sketches Collection</h2>
+                    </div>
+                    <div class="image-container">
+                        <img id="sketch-image" src="images\Development\25 sketches\25sketches.webp" alt="Sketches Collection">
+                        <div id="zoom-lens"></div>
+                        <div id="zoom-result"></div>
                     </div>
                 </div>
+                
 
-                <!-- Fabrics -->
+                <!-- Plan de Collection -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-200">
                         <div class="flex items-center justify-center text-gray-500">                            
@@ -71,12 +105,28 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Fabrics</h2>
-                        <p class="text-gray-600">Exploring sheer vs. heavy materials, focusing on sustainable and innovative textiles.</p>
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Collection Plan</h2>
+                    </div>
+                    <div class="swiper look1-slider mb-14">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="images\Development\collection plan\plan-de-collection-tailleur-1.png" alt="Look 1 Front View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Development\collection plan\plan-de-collection-tailleur-2.png" alt="Look 1 Front View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Development\collection plan\plan-de-collection-tailleur-3.png" alt="Look 1 Front View">
+                            </div>
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
                     </div>
                 </div>
 
-                <!-- Technical Sketches -->
+                <!-- Lineup -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-200">
                         <div class="flex items-center justify-center text-gray-500">                            
@@ -84,8 +134,10 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Technical Sketches</h2>
-                        <p class="text-gray-600">Detailed technical drawings showcasing construction and finishing details.</p>
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Look Lineup</h2>
+                    </div>
+                    <div>
+                        <img src="images\Development\look lineup with avatar\lineup.png" alt="Look 1 Front View">
                     </div>
                 </div>
 
@@ -145,5 +197,93 @@
             </div>
         </div>
     </footer>
+    <script>
+        function imageZoom(imgID, resultID) {
+            let img, lens, result, cx, cy;
+            img = document.getElementById(imgID);
+            result = document.getElementById(resultID);
+            lens = document.getElementById("zoom-lens");
+        
+            /*set size of the result div equal to the image size:*/
+            result.style.width = "200px";
+            result.style.height = "200px";
+        
+            /*calculate the ratio between result DIV and lens:*/
+            cx = result.offsetWidth / lens.offsetWidth;
+            cy = result.offsetHeight / lens.offsetHeight;
+        
+            /*Set background properties for the result DIV:*/
+            result.style.backgroundImage = "url('" + img.src + "')";
+            result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+        
+            /*execute a function when someone moves the cursor over the image, or the lens:*/
+            lens.addEventListener("mousemove", moveLens);
+            img.addEventListener("mousemove", moveLens);
+        
+            /*and also for touch screens:*/
+            lens.addEventListener("touchmove", moveLens);
+            img.addEventListener("touchmove", moveLens);
+        
+            function moveLens(e) {
+            let pos, x, y;
+            /*prevent any other actions that may occur when moving over the image:*/
+            e.preventDefault();
+            /*get the cursor's x and y positions:*/
+            pos = getCursorPos(e);
+            /*calculate the position of the lens:*/
+            x = pos.x - (lens.offsetWidth / 2);
+            y = pos.y - (lens.offsetHeight / 2);
+            /*prevent the lens from being positioned outside the image:*/
+            if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+            if (x < 0) {x = 0;}
+            if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+            if (y < 0) {y = 0;}
+            /*set the lens' position:*/
+            lens.style.left = x + "px";
+            lens.style.top = y + "px";
+            /*display what the lens "sees":*/
+            result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+            }
+        
+            function getCursorPos(e) {
+            let a, x = 0, y = 0;
+            /*get the x and y positions of the image:*/
+            a = img.getBoundingClientRect();
+            /*calculate the cursor's x and y coordinates, relative to the image:*/
+            x = e.pageX - a.left;
+            y = e.pageY - a.top;
+            /*consider any page scrolling:*/
+            x = x - window.pageXOffset;
+            y = y - window.pageYOffset;
+            return {x : x, y : y};
+            }
+        }
+        
+        /* Initiate zoom effect: */
+        imageZoom("sketch-image", "zoom-result");
+    </script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper for each look
+        const swiperOptions = {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        };
+
+        new Swiper('.look1-slider', swiperOptions);
+        new Swiper('.look2-slider', swiperOptions);
+        new Swiper('.look3-slider', swiperOptions);
+        new Swiper('.look4-slider', swiperOptions);
+    </script>    
 </body>
 </html> 

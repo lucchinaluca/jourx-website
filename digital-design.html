@@ -25,6 +25,21 @@
             </div>
         </div>
     </nav>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .swiper {
+            width: 100%;
+            height: 600px;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .look-section:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+    </style>
     <!-- Main Content -->
     <main class="pt-28 pb-12">
         <div class="max-w-7xl mx-auto">
@@ -32,79 +47,150 @@
             
             <!-- Digital Design Stages -->
             <div class="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
-                <!-- AI Design Tools -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden">
-                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
-                        <div class="flex items-center justify-center text-gray-500"> <!---- set image here -->                       
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">AI Design Tools</h2>
-                        <p class="text-gray-600 mb-4">Utilizing artificial intelligence for pattern generation and design exploration.</p>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <ul class="list-disc list-inside text-gray-700 space-y-2">
-                                <li>Pattern generation using AI algorithms</li>
-                                <li>Color palette optimization</li>
-                                <li>Trend analysis and prediction</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CLO3D Visualization -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden">
-                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
-                        <div class="flex items-center justify-center text-gray-500"><!---- set image here -->
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">CLO3D Development</h2>
-                        <p class="text-gray-600 mb-4">Virtual garment creation and fitting using CLO3D software.</p>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <ul class="list-disc list-inside text-gray-700 space-y-2">
-                                <li>Digital pattern making</li>
-                                <li>Virtual fitting and adjustments</li>
-                                <li>Material simulation and testing</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Digital Prototyping -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden">
-                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
-                        <div class="flex items-center justify-center text-gray-500"><!---- set image here -->
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Digital Prototyping</h2>
-                        <p class="text-gray-600 mb-4">Iterative digital prototyping process before physical production.</p>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <ul class="list-disc list-inside text-gray-700 space-y-2">
-                                <li>3D visualization and rendering</li>
-                                <li>Digital fabric testing</li>
-                                <li>Virtual fitting sessions</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sustainability Analysis -->
+                <!-- Moodboard -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-200">
                         <div class="flex items-center justify-center text-gray-500"><!---- set image here -->                        
                         </div>
                     </div>
                     <div class="p-6">
-                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Digital Sustainability Analysis</h2>
-                        <p class="text-gray-600 mb-4">Using digital tools to analyze and optimize sustainability metrics.</p>
-                        <div class="bg-white p-4 rounded border border-gray-200">
-                            <ul class="list-disc list-inside text-gray-700 space-y-2">
-                                <li>Material waste reduction</li>
-                                <li>Carbon footprint calculation</li>
-                                <li>Production efficiency optimization</li>
-                            </ul>
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Moodboard</h2>
+                    </div>
+                    <div>
+                        <img src="images\Digital design\2nd line With the Wind-Ai\moodboard.webp" alt="Look 4 Back View">
+                    </div>
+                </div>
+                 
+                <!-- Collection plan -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                        <div class="flex items-center justify-center text-gray-500">
                         </div>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3"> </h2>
+                    </div>
+                    <div>
+                        <img src="images\Digital design\2nd line With the Wind-Ai\collection-plan.webp" alt="Look 4 Back View">
+                    </div>
+                </div>
+
+
+                <!-- 3d development -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                        <div class="flex items-center justify-center text-gray-500"> <!---- set image here -->                       
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">3D Development</h2>
+                    </div>
+                    <div class="swiper look4-slider mb-12">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <video autoplay loop muted src="images\Digital design\2nd line With the Wind-Ai\3D Development\bag circle.mp4" alt="Look 4 Front View"></video>                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\3D Development\img2.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\avatar6.webp" alt="Look 4 Back View">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+
+                <!-- AI images -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                        <div class="flex items-center justify-center text-gray-500"><!---- set image here -->
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">AI Generated Images</h2>
+                    </div>
+                    <div class="swiper look4-slider mb-12">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\1.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\2.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\3.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\4.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\5.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\6.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\7.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\8.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\9.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\10.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\11.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\12.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\13.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\14.webp" alt="Look 4 Back View">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="images\Digital design\2nd line With the Wind-Ai\AI images\15.webp" alt="Look 4 Back View">
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+
+
+                <!-- Packaging Design -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                        <div class="flex items-center justify-center text-gray-500"><!---- set image here -->                        
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Packaging Design</h2>
+                    </div>
+                    <div>
+                        <img src="images\Digital design\2nd line With the Wind-Ai\packaging.webp" alt="Look 4 Back View">
+                    </div>
+                </div>
+
+                <!-- Avatar Design -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                        <div class="flex items-center justify-center text-gray-500"><!---- set image here -->                        
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Avatar Design</h2>
+                    </div>
+                    <div>
+                        <img src="images\Digital design\avatar6.webp" alt="Look 4 Back View">
                     </div>
                 </div>
             </div>
@@ -124,5 +210,28 @@
             </div>
         </div>
     </footer>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper for each look
+        const swiperOptions = {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        };
+
+        new Swiper('.look1-slider', swiperOptions);
+        new Swiper('.look2-slider', swiperOptions);
+        new Swiper('.look3-slider', swiperOptions);
+        new Swiper('.look4-slider', swiperOptions);
+    </script>
 </body>
 </html> 
