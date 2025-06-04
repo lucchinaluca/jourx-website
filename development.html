@@ -28,15 +28,15 @@
     <style>
         .image-container {
             position: relative;
-            width: 600px; /* Adjust as needed */
+            width: 800px; /* Adjust as needed */
         }
         
         #zoom-lens {
             position: absolute;
             border: 1px solid #d4d4d4;
             /*set the size of the lens equal to the zoom result div divided by the zoom level*/
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
         }
         
         #zoom-result {
@@ -61,7 +61,20 @@
             <h1 class="text-4xl font-['Playfair_Display'] font-bold mb-8">Design Process & Development</h1>
             
             <!-- Development Stages Grid -->
-            <div class="grid grid-cols-1 gap-8 max-w-3xl mx-auto">
+            <div class="grid grid-cols-1 gap-8 max-w-5xl mx-auto">
+                                
+                <!-- Motionboard -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                        <div class="flex items-center justify-center text-gray-500"><!---- set image here -->
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Motionboard</h2>
+                        <video id="motionVideo" autoplay loop muted src="images\Development\moodboard+motionbored\moodvideo.mkv" alt="Look 4 Front View"></video>
+                    </div>
+                </div>
+
                 <!-- Concept -->
                 <div class="bg-gray-50 rounded-lg overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-200">
@@ -83,7 +96,6 @@
                 <div class="bg-gray-50 rounded-lg overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-200">
                         <div class="flex items-center justify-center text-gray-500">
-                            <!---- set image here -->
                         </div>
                     </div>
                     <div class="p-6">
@@ -97,7 +109,7 @@
                 </div>
                 
 
-                <!-- Plan de Collection -->
+                <!-- Collection Plan-->
                 <div class="bg-gray-50 rounded-lg overflow-hidden">
                     <div class="aspect-w-16 aspect-h-9 bg-gray-200">
                         <div class="flex items-center justify-center text-gray-500">                            
@@ -135,8 +147,6 @@
                     </div>
                     <div class="p-6">
                         <h2 class="text-2xl font-['Playfair_Display'] mb-3">Look Lineup</h2>
-                    </div>
-                    <div>
                         <img src="images\Development\look lineup with avatar\lineup.png" alt="Look 1 Front View">
                     </div>
                 </div>
@@ -150,7 +160,8 @@
                     </div>
                     <div class="p-6">
                         <h2 class="text-2xl font-['Playfair_Display'] mb-3">Color Development</h2>
-                        <p class="text-gray-600">Color palette exploration and development for the collection.</p>
+                        <img src="images\Development\colorpallety\palette.webp" alt="Look 1 Front View">
+
                     </div>
                 </div>
 
@@ -163,21 +174,66 @@
                     </div>
                     <div class="p-6">
                         <h2 class="text-2xl font-['Playfair_Display'] mb-3">Prototypes</h2>
-                        <p class="text-gray-600">Initial prototypes and fittings to test construction methods.</p>
-                    </div>
-                </div>
+                    
+                        <div class="swiper look1-slider mb-6">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="images\Development\Prototypes\mirror image.jpg" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\Prototypes\bust.jpg" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\Prototypes\bust far.jpg" alt="Look 1 Front View" class="swiper-image">
+                                </div>
 
-                
-                <!-- Labeling methods -->
-                <div class="bg-gray-50 rounded-lg overflow-hidden">
-                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
-                        <div class="flex items-center justify-center text-gray-500">                            
-                            <!---- set image here -->
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
                         </div>
                     </div>
+                </div>
+                <style>
+                    .swiper-image {
+                        width: 100%;
+                        height: auto;
+                        max-height: 700px; /* Adjust as needed */
+                        object-fit: contain;
+                        display: block;
+                        margin: 0 auto;
+                    }
+                </style>
+                  
+                
+                <!-- Technical Drawings -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200">
+                        <div class="flex items-center justify-center text-gray-500"></div>
+                    </div>
                     <div class="p-6">
-                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Labeling methods</h2>
-                        <p class="text-gray-600">Initial lableing methods.</p>
+                        <h2 class="text-2xl font-['Playfair_Display'] mb-3">Technical Drawings</h2>
+                        <div class="swiper look1-slider mb-6">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="images\Development\techincal drawings\Untitled-33.webp" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\techincal drawings\Untitled-35.webp" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\techincal drawings\Untitled-37.jpg" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images\Development\techincal drawings\Untitled-39.webp" alt="Look 1 Front View" class="swiper-image">
+                                </div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -197,6 +253,19 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const video = document.getElementById("motionVideo");
+      
+          if (video) {
+            video.addEventListener("loadedmetadata", function () {
+              video.playbackRate = 0.7;
+            });
+          }
+        });
+    </script>
+      
     <script>
         function imageZoom(imgID, resultID) {
             let img, lens, result, cx, cy;
