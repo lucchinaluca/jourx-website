@@ -166,59 +166,75 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const productData = JSON.parse(sessionStorage.getItem('currentProduct') || '{}');
-            if (!productData.name || !productData.images) {
+            if (!productData.name || !productData.colors) {
                 window.location.href = 'shop.html';
                 return;
             }
-    
-            // Setup
-            let currentColor = Object.keys(productData.images)[0];
+
+            let currentColorIndex = 0;
+            let currentImageIndex = 0;
+            const mainImageEl = document.getElementById('mainImage');
             const productNameEl = document.getElementById('productName');
             const productPriceEl = document.getElementById('productPrice');
             const productDescEl = document.getElementById('productDescription');
-            const mainImageEl = document.getElementById('mainImage');
-            const thumbnails = document.querySelectorAll('.grid button');
+            const thumbnailsContainer = document.querySelector('.grid.grid-cols-4');
             const colorContainer = document.querySelector('.mb-8 .flex.space-x-4');
-            colorContainer.innerHTML = ''; // Clear default hardcoded buttons
-    
+
             // Generate color buttons
-            Object.keys(productData.images).forEach((colorKey, idx) => {
+            colorContainer.innerHTML = '';
+
+            productData.colors.forEach((color, idx) => {
                 const btn = document.createElement('button');
-                btn.className = `w-8 h-8 rounded-full ring-offset-2 {idx === 0 ? 'ring-2 ring-black' : ''}€`;
-                btn.style.backgroundColor = colorKey === 'black' ? '#000' : (colorKey === 'gray' ? '#aaa' : colorKey);
-                btn.title = colorKey;
+                btn.className = `w-8 h-8 rounded-full ring-offset-2${idx === 0 ? ' ring-2 ring-black' : ''}`;
+                btn.style.backgroundColor = color.hex;
+                btn.title = color.name;
                 btn.addEventListener('click', () => {
-                    document.querySelectorAll('.mb-8 .flex.space-x-4 button').forEach(b => b.classList.remove('ring-2'));
-                    btn.classList.add('ring-2');
-                    currentColor = colorKey;
-                    updateImages(colorKey);
+                    document.querySelectorAll('.mb-8 .flex.space-x-4 button').forEach(b => b.classList.remove('ring-2', 'ring-black'));
+                    btn.classList.add('ring-2', 'ring-black');
+                    currentColorIndex = idx;
+                    currentImageIndex = 0;
+                    updateImages(idx);
                 });
                 colorContainer.appendChild(btn);
             });
-    
-            // Update images based on color
-            function updateImages(color) {
-                const images = productData.images[color];
-                if (!images || images.length < 5) return;
-                mainImageEl.src = images[0];
-                thumbnails.forEach((thumb, index) => {
-                    const img = thumb.querySelector('img');
-                    img.src = images[index + 1];
-                    thumb.onclick = () => {
-                        mainImageEl.src = images[index + 1].replace('400x400', '800x1000');
-                        thumbnails.forEach(t => t.classList.remove('ring-2'));
-                        thumb.classList.add('ring-2');
+
+            function updateImages(colorIndex) {
+                const images = productData.colors[colorIndex].images;
+                if (!images || images.length === 0) return;
+                
+                // Set main image
+                mainImageEl.src = images[currentImageIndex];
+                
+                // Clear existing thumbnails
+                thumbnailsContainer.innerHTML = '';
+                
+                // Create thumbnails for ALL images
+                images.forEach((image, index) => {
+                    const button = document.createElement('button');
+                    button.className = `aspect-w-1 aspect-h-1 bg-gray-100 focus:ring-2 ${index === currentImageIndex ? 'ring-2 ring-black' : ''}`;
+                    
+                    const img = document.createElement('img');
+                    img.src = image;
+                    img.alt = `View ${index + 1}`;
+                    img.className = 'w-full h-full object-cover';
+                    
+                    button.appendChild(img);
+                    button.onclick = () => {
+                        currentImageIndex = index;
+                        mainImageEl.src = image;
+                        thumbnailsContainer.querySelectorAll('button').forEach(t => t.classList.remove('ring-2', 'ring-black'));
+                        button.classList.add('ring-2', 'ring-black');
                     };
+                    
+                    thumbnailsContainer.appendChild(button);
                 });
             }
-    
-            // Set initial content
-            document.title = `${productData.name} - Fashion Jury`;
+
             productNameEl.textContent = productData.name;
-            productPriceEl.textContent = `$${productData.price}`;
+            productPriceEl.textContent = `€${productData.price}`;
             productDescEl.textContent = productData.description;
-    
-            updateImages(currentColor);
+            document.title = `${productData.name} - Jour X`;
+            updateImages(currentColorIndex);
         });
     </script>    
 </body>
